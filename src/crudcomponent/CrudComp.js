@@ -1,14 +1,16 @@
 import React,{useState} from 'react'
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 const CrudComp = () => {
 
+  const navigate = useNavigate();
 
   const  [user, setuser] = useState({
     Layout:"",
     Name: "",
     Capacity: "",
-    status: "",
+
     Image: ""
   
 })
@@ -19,7 +21,7 @@ let data = {
   Layout: user.Layout,
   Name: user.Name, 
   Capacity:user.Capacity,
-  status:user.status,
+
   Image:user.Image
 }
 
@@ -34,6 +36,8 @@ const submitForm = (e)=>{
 
   
 
+
+navigate("/read");  
 
 
 }

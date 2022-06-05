@@ -1,7 +1,20 @@
 import axios from 'axios';
+
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Read = () => {
+
+  const setData = (data) => {
+    let  mainData = data;
+    console.log(mainData)
+    
+    localStorage.setItem('mainData', mainData);
+    // localStorage.setItem('Capacity', Capacity);
+    // localStorage.setItem('Name', Name)
+
+    // localStorage.setItem('Image', Image)
+ }
 
     
 const [APIData, setAPIData] = useState([]);
@@ -24,7 +37,8 @@ useEffect(() => {
       <th scope="col">layout</th>
       <th scope="col">capacity</th>
       <th scope="col">name</th>
-      <th scope="col">status</th>
+    
+      <th scope="col">image</th>
     
     </tr>
   </thead>
@@ -36,12 +50,15 @@ useEffect(() => {
      <th scope="row">{data.Layout}</th>
       <td>{data.Capacity}</td>
       <td>{data.Name}</td>
-      <td>{data.status}</td>
+     
       <td>{data.Image}</td>
-          {/* <Table.Cell>{data.firstName}</Table.Cell>
-           <Table.Cell>{data.lastName}</Table.Cell>
-           <Table.Cell>{data.checkbox ? 'Checked' : 'Unchecked'}</Table.Cell> */}
-       <img src={data.Image} className=""/>
+
+      <Link to='/update'>
+      <td><button onClick={() => setData(data)}>edit</button></td>
+      </Link>
+      <td><button >delele</button></td>
+   
+          
           </tr> 
           
    )})}
